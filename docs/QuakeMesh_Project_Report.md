@@ -3,11 +3,11 @@
 **PROJECT NAME:** QUAKEMESH
 
 **TEAM MEMBERS:**
-RUTUJA KHARODE
-AMIT SINGH
-TAVISHI UMRAO
-ANANT PANDEY
-SANSKRITI
+RUTUJA KHARODE,
+AMIT SINGH,
+TAVISHI UMRAO,
+ANANT PANDEY,
+SANSKRITI.
 
 **INSTITUTION NAME:** VIT BHOPAL UNIVERSITY
 
@@ -60,7 +60,7 @@ It does not include a physical unit, long-range wireless deployment, cloud dashb
 ## 5. System Architecture
 Each node contains a sensing unit, a controller, an output unit, and a communication interface. The MPU6050 provides raw acceleration readings on the X, Y, and Z axes over I2C. The ESP32 reads the values, converts them to approximate g-units, calculates the magnitude, and compares it with configured thresholds. The OLED presents the measured magnitude and current state. LEDs indicate the alert level, and the buzzer provides an audible strong-alert indication.
 
-In the two-node simulation, Node 1 acts as the detecting and transmitting node. When its calculated magnitude exceeds the strong threshold, it prints ìALERTî over serial. Node 2 listens for a complete line when the message equals ìALERTî; it turns on its red LED and buzzer and displays an alert-received message. 
+In the two-node simulation, Node 1 acts as the detecting and transmitting node. When its calculated magnitude exceeds the strong threshold, it prints ‚ÄúALERT‚Äù over serial. Node 2 listens for a complete line when the message equals ‚ÄúALERT‚Äù; it turns on its red LED and buzzer and displays an alert-received message. 
 
 ### 5.1. Block Diagram
 (Block diagram included in PDF)
@@ -86,10 +86,10 @@ For an initial physical build, mount the ESP32, sensor and OLED firmly so that t
 | --- | --- | --- |
 | ESP32 DevKit V1 | Wi-Fi/Bluetooth MCU board | 1 |
 | MPU6050 | 3-axis accelerometer + gyroscope | 1 |
-| SSD1306 OLED | 0.96-inch, 128◊64, I2C | 1 |
+| SSD1306 OLED | 0.96-inch, 128√ó64, I2C | 1 |
 | Buzzer | Active/passive, compatible drive | 1 |
 | LEDs | Green, yellow and red, 5 mm | 3 |
-| Resistors | 220 O, º W current limiting | 3 |
+| Resistors | 220 O, ¬º W current limiting | 3 |
 | Breadboard / PCB and wires | Prototype interconnects | 1 set |
 
 ### 6.3. Pin Mapping
@@ -107,9 +107,9 @@ For an initial physical build, mount the ESP32, sensor and OLED firmly so that t
 (PCB design included in PDF)
 
 ## 7. Software and Firmware
-The firmware is written for the Arduino framework on ESP32. Node 1 initialises serial communication, output pins, the MPU6050 and the SSD1306 OLED. It wakes the MPU6050 by writing to its power-management register, then repeatedly reads the six acceleration data bytes beginning at register 0x3B. The raw signed readings are divided by 16384.0, corresponding to the MPU6050 nominal sensitivity at the ±2 g setting. The code calculates the vector magnitude as sqrt(x*x + y*y + z*z). It then turns off the indicators before applying the current threshold logic, updates the OLED and waits before the next cycle.
+The firmware is written for the Arduino framework on ESP32. Node 1 initialises serial communication, output pins, the MPU6050 and the SSD1306 OLED. It wakes the MPU6050 by writing to its power-management register, then repeatedly reads the six acceleration data bytes beginning at register 0x3B. The raw signed readings are divided by 16384.0, corresponding to the MPU6050 nominal sensitivity at the ¬±2 g setting. The code calculates the vector magnitude as sqrt(x*x + y*y + z*z). It then turns off the indicators before applying the current threshold logic, updates the OLED and waits before the next cycle.
 
-Node 2 initialises its outputs, display and serial interface. It checks whether serial data is available, reads through the newline, trims whitespace and compares the result with ìALERTî. When a match is received, the node activates the red LED and buzzer, updates the OLED, holds the alarm for four seconds, and then switches the red LED and buzzer off.
+Node 2 initialises its outputs, display and serial interface. It checks whether serial data is available, reads through the newline, trims whitespace and compares the result with ‚ÄúALERT‚Äù. When a match is received, the node activates the red LED and buzzer, updates the OLED, holds the alarm for four seconds, and then switches the red LED and buzzer off.
 
 ### 7.1. Threshold logic
 The supplied code uses three configurable values: LIGHT = 1.4, MEDIUM = 2.4 and STRONG = 3.3. A magnitude above STRONG activates the red LED and buzzer and transmits the alert. A magnitude above MEDIUM but not above STRONG activates yellow. A magnitude above LIGHT but not above MEDIUM activates green. Otherwise the display reports SAFE and the outputs remain off.
@@ -128,7 +128,7 @@ No machine-learning or TinyML model is used in the current firmware. The decisio
 (Flowchart included in PDF)
 
 ## 8. Communication and Alert System
-Node 1 transmits the plain-text line ìALERTî through UART at 115200 baud. Node 2 reads the line and reacts only when the trimmed message matches the expected word. The implementation demonstrates the end-to-end software behaviour, but the short serial link is not suitable for separated houses without additional communication hardware.
+Node 1 transmits the plain-text line ‚ÄúALERT‚Äù through UART at 115200 baud. Node 2 reads the line and reacts only when the trimmed message matches the expected word. The implementation demonstrates the end-to-end software behaviour, but the short serial link is not suitable for separated houses without additional communication hardware.
 
 ESP-NOW is a possible option for short-range device-to-device communication using ESP32 radios. LoRa could be explored where longer range and low data rate are priorities, although coverage depends on antenna, environment, regional radio rules and module settings. GSM or cellular messaging could provide wider-area notifications where service is available. These options require additional firmware, hardware and field tests and are not part of the current demonstrated build.
 
@@ -143,7 +143,7 @@ The documented test sequence is: open the two-board project; start the simulatio
 (Image of prototype included in PDF)
 
 ### 9.2. Calibration and Test Setup
-The source firmware assumes the MPU6050 ±2 g range, for which the nominal scale factor is 16384 least-significant bits per g. Before physical testing, confirm the sensor range configuration and compare the stationary readings on all axes with the expected gravity vector for the sensor's orientation. Record offset values and repeat the check after mounting the sensor in its enclosure.
+The source firmware assumes the MPU6050 ¬±2 g range, for which the nominal scale factor is 16384 least-significant bits per g. Before physical testing, confirm the sensor range configuration and compare the stationary readings on all axes with the expected gravity vector for the sensor's orientation. Record offset values and repeat the check after mounting the sensor in its enclosure.
 
 * A physical test setup should use a controlled vibration source or shake table, a rigid sensor mount and a reference instrument if available.
 * Test several amplitudes and frequencies, repeat each test, and include non-earthquake disturbances such as walking, door slams and nearby traffic.
@@ -155,15 +155,15 @@ The table below reproduces the functional results reported in the supplied proje
 
 | Metric | Value stated in source report | Interpretation |
 | --- | --- | --- |
-| Magnitude calculation | Matches v(x≤+y≤+z≤) | Checked against known simulator slider values |
-| Detection to LED | < 200 ms | Source report associates this with 150ñ200 ms loop delay |
+| Magnitude calculation | Matches v(x¬≤+y¬≤+z¬≤) | Checked against known simulator slider values |
+| Detection to LED | < 200 ms | Source report associates this with 150‚Äì200 ms loop delay |
 | Inter-node alert latency | < 100 ms | Reported for UART at 115200 baud in simulation |
 | False alarms | None under ambient simulation conditions | Not a physical false-alarm rate |
 | Progressive alert logic | Correct Green ? Yellow ? Red | Functional simulation observation |
 | Message delivery | 100% in reported tests | Node 2 reportedly reacted in each test; test count not specified |
 
 ## 11. Bills of Material
-For a physical node, the supplied report estimates a total of ?550ñ?900, depending on local prices. A two-node build would therefore be approximately ?1,100ñ?1,800 before any wireless modules, enclosure, power supply, shipping or test equipment. These figures are estimates and should be refreshed with supplier quotations before procurement.
+For a physical node, the supplied report estimates a total of ?550‚Äì?900, depending on local prices. A two-node build would therefore be approximately ?1,100‚Äì?1,800 before any wireless modules, enclosure, power supply, shipping or test equipment. These figures are estimates and should be refreshed with supplier quotations before procurement.
 
 ## 12. Social Impact and Sustainability
 1. A low-cost, repairable educational design can help students and community groups learn about sensing, embedded systems and emergency communication.
