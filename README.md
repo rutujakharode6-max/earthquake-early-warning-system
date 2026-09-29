@@ -13,11 +13,11 @@ This project was developed for the **FOSSEE Open Hardware Make-A-Thon 2026** and
 This repository contains the firmware for a dual-node system and the full project documentation.
 
 - \
-ode1_sender/\: Contains \
-ode1_sender.ino\ - The sensor node that reads from the MPU6050 accelerometer, calculates magnitude, drives local alerts, and transmits an \ALERT\ signal over Serial/UART upon strong detection.
+node1_sender/\: Contains \
+node1_sender.ino\ - The sensor node that reads from the MPU6050 accelerometer, calculates magnitude, drives local alerts, and transmits an \ALERT\ signal over Serial/UART upon strong detection.
 - \
-ode2_receiver/\: Contains \
-ode2_receiver.ino\ - The receiver node that listens for incoming alerts and activates its own buzzer and LED to warn users.
+node2_receiver/\: Contains \
+node2_receiver.ino\ - The receiver node that listens for incoming alerts and activates its own buzzer and LED to warn users.
 - \docs/\: Contains the full project report in both Markdown (\QuakeMesh_Project_Report.md\) and Word (\QuakeMesh_Project_Report.docx\) formats.
 
 ## Hardware Required (per node)
@@ -31,8 +31,8 @@ ode2_receiver.ino\ - The receiver node that listens for incoming alerts and acti
 ## Setup & Testing
 1. Clone this repository.
 2. Open the \
-ode1_sender.ino\ and \
-ode2_receiver.ino\ files in the Arduino IDE.
+node1_sender.ino\ and \
+node2_receiver.ino\ files in the Arduino IDE.
 3. Flash the firmware to two separate ESP32 boards.
 4. Wire the components according to the pin mapping in the Project Report.
 5. Connect the \TX0\ pin of Node-1 to the \RX0\ pin of Node-2 to establish the serial communication link.
