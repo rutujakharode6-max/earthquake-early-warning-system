@@ -7,7 +7,7 @@
 ## Overview
 **QuakeMesh** is a low-cost, open-source, multi-node earthquake early warning system designed for Indian neighbourhoods, villages and educational campuses. Instead of relying on a single expensive sensor station, QuakeMesh uses a network of affordable ESP32-based nodes that communicate with each other. When one node detects strong ground motion, it immediately alerts nearby nodes, creating a local early-warning mesh.
 
-This project was developed for the **FOSSEE Open Hardware Make-A-Thon 2026** and validated as a working multi-board prototype on the Velxio simulator.
+This project was developed for the **FOSSEE Open Hardware Make-A-Thon 2026** and is validated as a working multi-board prototype on the Velxio simulator.
 
 ## Repository Structure
 This repository contains the firmware for a dual-node system and the full project documentation.
