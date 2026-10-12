@@ -30,12 +30,14 @@ The core practical problem addressed by QuakeMesh is: how a low-cost sensor node
 The motivation is educational and social. A locally audible and visible warning may help people become aware of shaking, while a networked design illustrates how neighbouring devices can share information. The project does not claim that a low-cost accelerometer can predict an earthquake before it begins, nor that the prototype provides guaranteed seconds of advance warning. It detects motion at the sensor and relays a message after the threshold is crossed.
 
 ## 3. Objectives and Scopes
+## 3.1 Objectives
 The main objective is to:-
 1. Design the a two-node earthquake-motion alert prototype using an MPU6050
 2. Calculate a simple acceleration magnitude; classify readings into progressive alert levels Activate LEDs, a buzzer and an OLED display
 3. Transmit a alert message from one node to another
 4. Document the design so another student can reproduce the simulation easily just by studying the prototype.
-
+   
+## 3.2 Scopes
 The present scope includes a 
 1. two-board simulation, 
 2. threshold-based decision logic, 
