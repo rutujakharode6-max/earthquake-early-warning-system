@@ -11,7 +11,6 @@ SANSKRITI.
 
 **INSTITUTION NAME:** VIT BHOPAL UNIVERSITY
 
----
 
 ## 1. Abstract
 QuakeMesh is a low-cost, open-source, multi-node earthquake early warning system designed for Indian neighbourhoods, villages and educational campuses. Instead of depending on a single expensive seismic station, the system employs a network of affordable ESP32-based sensor nodes that communicate with one another. When any node detects strong ground motion, it promptly alerts neighbouring nodes, thereby forming a local early-warning mesh.
