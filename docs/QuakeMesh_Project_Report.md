@@ -212,4 +212,4 @@ We are also thankful to the developers of Velxio for creating such a powerful an
 
 Finally, we extend our heartfelt thanks to the global open-source community. The freely available libraries, documentation and shared knowledge formed the true foundation of this project, and reminded us of the strength that comes from building openly and collaboratively.
 
-## Thank you
+## THANK YOU
