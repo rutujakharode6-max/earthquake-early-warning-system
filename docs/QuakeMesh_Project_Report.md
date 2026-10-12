@@ -180,7 +180,6 @@ To reproduce the current demonstration, open the Velxio simulator at https://vel
 
 Load the Node 1 and Node 2 source code from the accompanying firmware file into the corresponding boards. Configure the serial connection at 115200 baud and ensure that the transmitted newline is delivered to the receiver.
 
-GITHUB repository:-
 Velxio simulation link:- https://velxio.dev/project/72f37e53-397b-418e-98e0-a470ec03fdcf
 
 ## 14. Limitations and Future Work
