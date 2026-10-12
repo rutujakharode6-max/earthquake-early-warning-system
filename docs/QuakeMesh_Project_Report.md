@@ -46,7 +46,7 @@ The present scope includes a
 
 It does not include a physical unit, long-range wireless deployment, cloud dashboard, mobile application, professional seismic validation. The current prototype focuses on detection, local visual/audio alerts and mesh messaging between two nodes. Future extensions (cloud logging, SMS, LoRa long-range links) are identified but kept outside the present scope so that the core idea remains simple, reproducible and fully demonstrated.
 
-## 4. Existing Approaches
+## 4. Existing Approaches and Novelty
 ### 4.1 Existing Approaches
 * Official earthquake monitoring is mainly handled by specialized seismic networks and government agencies. These systems use high-quality instrumented stations along with established methods for processing data and sending public warnings.
 * Commercial earthquake sensors and IoT-based products are also available in the market, but they are often expensive and closed-sourced.
@@ -64,7 +64,7 @@ Each node contains a sensing unit, a controller, an output unit, and a communica
 
 In the two-node simulation, Node 1 acts as the detecting and transmitting node. When its calculated magnitude exceeds the strong threshold, it prints “ALERT” over serial. Node 2 listens for a complete line when the message equals “ALERT”; it turns on its red LED and buzzer and displays an alert-received message. 
 
-### 5.1. Block Diagram
+## Block Diagram
 (Block diagram included in PDF)
 
 For a physical network, the UART link would need to be replaced or bridged by a suitable radio or network protocol. A wireless implementation would also need node identification, message integrity checks, duplicate suppression, timeout handling, and a defined network topology.
@@ -76,7 +76,7 @@ The pin map below follows the supplied firmware and report. It should be checked
 
 For an initial physical build, mount the ESP32, sensor and OLED firmly so that the sensor's orientation is known and repeatable. Avoid placing the sensor on a loose or flexible surface. A small enclosure may include openings for the OLED and buzzer, secure mounting points, and access for USB programming. Enclosure drawings and a PCB layout are not included in the supplied source material; these remain design tasks for a physical revision.
 
-### 6.1. Reason for simulation only approach
+## 6.1. Reason for simulation only approach
 1. Rapid iteration: Algorithm thresholds, pin assignments and communication logic were refined dozens of times within hours impossible with repeated physical soldering.
 2. Multi-board validation: Velxio uniquely allows two (or more) ESP32 boards to run simultaneously on one canvas and exchange serial messages, proving the mesh concept before any cost is incurred.
 3. Zero component wastage and zero e-waste during development - highly sustainable.
