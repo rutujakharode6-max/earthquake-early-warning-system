@@ -9,6 +9,13 @@
 
 This project was developed for the **FOSSEE Open Hardware Make-A-Thon 2026** and is validated as a working multiboard prototype on the Velxio simulator.
 
+## Reasons for simulation only approach:
+1. Rapid Iteration
+2. Multi-board validation
+3. Zero Component Waste
+4. Perfect reproducibility
+5. Focus on design quality
+
 ## Repository Structure
 This repository contains the firmware for a dual-node system and the full project documentation.
 
